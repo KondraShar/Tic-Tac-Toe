@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <script src="./logic.js" defer></script>
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
+
+    <div id="vertical-content">
+
+        <header>
+            <div id="game-title">
+                <p>Tic-Tac-Toe</p>
+            </div>
+            <div id="info-board">
+            </div>
+        </header>
+    
+        <main>
+            <div id="gameboard">
+                <div class="tile" id="tile-1">X</div>
+                <div class="tile" id="tile-2"></div>
+                <div class="tile" id="tile-3"></div>
+                <div class="tile" id="tile-4"></div>
+                <div class="tile" id="tile-5"></div>
+                <div class="tile" id="tile-6"></div>
+                <div class="tile" id="tile-7"></div>
+                <div class="tile" id="tile-8"></div>
+                <div class="tile" id="tile-9"></div>
+            </div>
+            <button id="start-reset-game-btn">Reset</button>
+        </main>
+
+    </div>
+
+    <section>
+
+        <div id="player-board">
+            <div id="edit-player-name">
+                <div id="player-x">
+                    <p>Player X</p>
+                    <input>
+                </div>
+                <div id="player-y">
+                    <p>Player Y</p>
+                    <input>
+                </div>
+            </div>
+        </div>
+
+        <div id="score-board-container">
+            <div class="player" id="player-x">
+                <p>Bob</p>
+                <div class="score player-x">0</div>
+            </div>
+            <div id="vs">:</div>
+            <div class="player" id="player-y">
+                <p>Francesca</p>
+            <div class="score player-y">0</div>
+            </div>
+        </div>
+
+        <button id="reset-score-board-btn">Reset</button>
+    </section>
     
 </body>
 </html>

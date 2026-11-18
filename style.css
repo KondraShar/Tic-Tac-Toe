@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Futura', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#vertical-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#game-title {
+    background-color: #ded6a0;
+    width: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+#gameboard {
+    width: 400px;
+    height: 400px;
+    background-color: #6a5fb0;
+    display: grid;
+    grid-template-columns: repeat(3, 28%);
+    grid-template-rows: repeat(3, 28%);
+    gap: 5px;
+    background: #333;
+    justify-content: center;
+    align-content: center;
+}
+
+.tile {
+    background-color: #5f5959;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+}
+
+#start-reset-game-btn {
+    width: 30%;
+}
+
+
+section {
+    min-width: 250px;
+    border: 1px solid black;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+#player-board {
+    padding: 12px;
+}
+
+
+#score-board-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+    gap: 12px;
+    padding: 12px;
+}
+
+.player {
+    min-width: 50%;
+    height: 80px;
+    padding: 6px;
+    padding-bottom: 14px;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#vs {
+    padding-bottom: 7px;
+}
