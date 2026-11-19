@@ -3,23 +3,42 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 62px;
+
     margin: 0;
-    padding: 20px;
+    padding: 40px;
+    padding-right: 60px;
     font-family: 'Futura', Verdana, Geneva, Tahoma, sans-serif;
+    color: #333333; /* #1F2937 #333 #3A2E39 #3A2E39*/
 }
 
 #vertical-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 48px;
     align-items: center;
+    justify-self: center;
+    padding-left: 350px;
+}
+
+header {
+    width: auto;
+
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-self: flex-end;
 }
 
 #game-title {
     background-color: #ded6a0;
-    width: 100px;
-    height: 80px;
+    width: 250px;
+    height: 132px;
+    font-size: 2rem;
+
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +47,7 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 28px;
     align-items: center;
 }
 
@@ -36,10 +55,14 @@ main {
     width: 400px;
     height: 400px;
     background-color: #6a5fb0;
+    border-radius: 6px;
+    box-shadow: 0 0px 12px rgba(0, 0, 0, 0.25);
+    color: #FBCFE8 ; /* #FBCFE8  #FDE68A */
+
     display: grid;
     grid-template-columns: repeat(3, 28%);
     grid-template-rows: repeat(3, 28%);
-    gap: 5px;
+    gap: 8px;
     background: #333;
     justify-content: center;
     align-content: center;
@@ -47,11 +70,13 @@ main {
 
 .tile {
     background-color: #5f5959;
+    font-size: 6rem;
+    border-radius: 3px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 6rem;
 }
 
 #start-reset-game-btn {
@@ -61,19 +86,100 @@ main {
 
 section {
     min-width: 250px;
-    border: 1px solid black;
+    max-width: 300px;
+    height: 600px;
+    border: 1.42px solid #333333;
     border-radius: 12px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25);
+
+
     display: flex;
     flex-direction: column;
-    padding: 14px;
+    gap: 24px;
+    padding: 24px;
     justify-content: center;
     align-items: center;
 }
 
-#player-board {
-    padding: 12px;
+input {
+    border: 1px solid #333333;
+    border-radius: 3px;
 }
 
+button {
+    width: 100px;
+    height: 40px;
+
+    background-color: rgba(210, 203, 203, 0.286);
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 6px;
+}
+
+
+#info-board {
+    width: 80%;
+    height: 100px;
+    padding: 22px;
+
+    border-radius: 8px;
+    background-color: #56565625;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+#info-board > p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+#player-board {
+    /*align-self: start;*/
+
+    height: 150px;
+    padding: 10px;
+    padding-right: 22px;
+    padding-bottom: 28px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#edit-player-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+}
+
+
+#edit-player-name > p {
+    margin: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+#player-x,
+#player-y {
+    height: 3.8rem;
+    font-size: 0.942rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+#player-board > div {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-start;
+}
 
 #score-board-container {
     display: flex;
@@ -82,27 +188,86 @@ section {
     align-items: end;
     gap: 12px;
     padding: 12px;
+    padding-bottom: 24px;
 }
 
 .player {
     min-width: 50%;
-    height: 80px;
+    height: 100px;
     padding: 6px;
-    padding-bottom: 14px;
-    border: 1px solid black;
+    padding-bottom: 8px;
+    border: 1px solid #333333;
     border-radius: 8px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
+    gap: 82px;
 }
 
+.player p {
+    font-size: 0.942rem;
+    margin: 0px;
+    max-width: 80px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+
+
 .score {
+    font-size: 1.642rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #vs {
     padding-bottom: 7px;
+}
+
+
+
+/* Effects */
+
+
+@keyframes hvr-bob {
+  0%   { transform: translateY(-4px); }
+  50%  { transform: translateY(-2px); }
+  100% { transform: translateY(-4px); }
+}
+@keyframes hvr-bob-float {
+  100% { transform: translateY(-4px); }
+}
+
+/* Base */
+.hvr-bob-sink {
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition: transform 0.3s ease-out;
+}
+
+/* Hover: bob */
+.hvr-bob-sink:hover {
+  animation-name: hvr-bob-float, hvr-bob;
+  animation-duration: .3s, 1.5s;
+  animation-delay: 0s, .3s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal, alternate;
+}
+
+/* Click: stop bobbing and sink */
+.hvr-bob-sink:active {
+  animation: none;
+  transform: translateY(2px);
+}
+
+.hvr-bob-sink:focus {
+  outline: none;
 }
