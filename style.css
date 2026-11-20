@@ -79,8 +79,9 @@ main {
     align-items: center;
 }
 
-#start-reset-game-btn {
-    width: 30%;
+#start-reset-game-btn,
+#start-reset-round-btn {
+    width: 50%;
 }
 
 
@@ -137,6 +138,7 @@ button {
     font-size: 1rem;
     line-height: 1.6;
     letter-spacing: 0.5px;
+    text-align: center;
 }
 
 #player-board {
@@ -192,26 +194,30 @@ button {
 }
 
 .player {
-    min-width: 50%;
+    flex: 0 0 100px;
     height: 100px;
+    box-sizing: border-box;
     padding: 6px;
+    padding-top: 12px;
     padding-bottom: 8px;
     border: 1px solid #333333;
     border-radius: 8px;
 
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-    gap: 82px;
 }
 
 .player p {
+    width: 100%;
+    margin: 0;
     font-size: 0.942rem;
-    margin: 0px;
-    max-width: 80px;
-    overflow-x: auto;
-    scrollbar-width: none;
+    text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

@@ -19,7 +19,7 @@
     
         <main>
             <div id="gameboard">
-                <div class="tile hvr-bob-sink" id="tile-1">X</div>
+                <!-- <div class="tile hvr-bob-sink" id="tile-1">X</div>
                 <div class="tile hvr-bob-sink" id="tile-2"></div>
                 <div class="tile hvr-bob-sink" id="tile-3"></div>
                 <div class="tile hvr-bob-sink" id="tile-4"></div>
@@ -27,9 +27,9 @@
                 <div class="tile hvr-bob-sink" id="tile-6"></div>
                 <div class="tile hvr-bob-sink" id="tile-7"></div>
                 <div class="tile hvr-bob-sink" id="tile-8"></div>
-                <div class="tile hvr-bob-sink" id="tile-9"></div>
+                <div class="tile hvr-bob-sink" id="tile-9"></div> -->
             </div>
-            <button class="hvr-bob-sink" id="start-reset-game-btn">Reset</button>
+            <button class="hvr-bob-sink" id="start-reset-round-btn">Reset</button>
         </main>
 
     </div>
@@ -37,35 +37,35 @@
     <section>
 
         <div id="info-board">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem amet laboriosam quasi </p>
+            <p id="info-board-text">Welcome to TicTacToe!<br>Play 5 rounds</p>
         </div>
 
         <div id="player-board">
             <div id="edit-player-name">
                 <div id="player-x">
                     <p>Player X</p>
-                    <input type="text" minlength="2" maxlength="20">
+                    <input id="player-name-x" type="text" minlength="2" maxlength="20">
                 </div>
-                <div id="player-y">
-                    <p>Player Y</p>
-                    <input type="text" minlength="2" maxlength="20">
+                <div id="player-o">
+                    <p>Player O</p>
+                    <input id="player-name-o" type="text" minlength="2" maxlength="20">
                 </div>
             </div>
         </div>
 
         <div id="score-board-container">
-            <div class="player" id="player-x">
-                <p>Bob</p>
+            <div class="player">
+                <p id="player-x-name-display">X</p>
                 <div class="score player-x">0</div>
             </div>
             <div id="vs">:</div>
-            <div class="player" id="player-y">
-                <p>Francesca</p>
-            <div class="score player-y">0</div>
+            <div class="player">
+                <p id="player-o-name-display">O</p>
+            <div class="score player-o">0</div>
             </div>
         </div>
 
-        <button  class="hvr-bob-sink" id="reset-score-board-btn">Reset</button>
+        <button  class="hvr-bob-sink" id="start-reset-game-btn">Start Game</button>
     </section>
     
 </body>
