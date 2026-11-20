@@ -86,8 +86,7 @@ main {
 
 
 section {
-    min-width: 250px;
-    max-width: 300px;
+    width: 250px;
     height: 600px;
     border: 1.42px solid #333333;
     border-radius: 12px;

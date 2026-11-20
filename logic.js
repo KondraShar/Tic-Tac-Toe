@@ -106,17 +106,15 @@ const displayController = (() => {
 
         if (gameboardObject.checkWinner()) {
             currentPlayer.increaseScore();
+            game.setNextStarter(currentPlayer);
             playerScoreDisplayX.textContent = playerX.getScore();
             playerScoreDisplayO.textContent = playerO.getScore();
-            handleInfoBoxMessage(`${currentPlayer.getName()} wins this round! 🎉`);
-            game.setGameCompleted(true);
-            disableClicks();
-        return;
+            finishRound(`${currentPlayer.getName()} wins this round! 🎉`);
+            return;
         }
 
         if (gameboardObject.isFull()) {
-            handleInfoBoxMessage("It's a draw!");
-            disableClicks();
+            finishRound("It's a draw!");
             return;
         }
     
@@ -126,7 +124,23 @@ const displayController = (() => {
         handleInfoBoxMessage(`Your turn ${nextPlayer.getStamp()} - ${nextPlayer.getName()}`);
     };
 
+    const finishRound = (roundMessage) => {
+        disableClicks();
+
+        if (game.endRound()) {
+            const winner = game.getGameWinner();
+            const score = `${playerX.getScore()} : ${playerO.getScore()}`;
+            handleInfoBoxMessage(winner
+                ? `${winner.getName()} wins the game ${score}! 🎉🎉🎉`
+                : `The game ends in a draw ${score}!`);
+        } else {
+            handleInfoBoxMessage(roundMessage);
+        }
+    };
+
     const handleGameboardReset = () => {
+        if (game.getGameCompleted()) return;
+
         gameboardObject.reset();
         render();
         enableClicks();
@@ -142,8 +156,6 @@ const displayController = (() => {
 
         playerScoreDisplayX.textContent = playerX.getScore();
         playerScoreDisplayO.textContent = playerO.getScore();
-
-        infoBox.textContent = "Welcome to TicTacToe!<br>Play 5 rounds";
 
         gameboardObject.reset();
         enableClicks();
@@ -221,15 +233,11 @@ const playerO = player("Alice", "O");
 const game = (() => {
 
     const roundsInGame = 3;
-    let round = 0;
     const players = [playerX, playerO];
     let currentPlayer = playerX;
     let gameCompleted = false;
 
     const getPlayers = () => players;
-
-    const getRound = () => round;
-    const increaseRound = () => round++;
 
     const getCurrentPlayer = () => currentPlayer;
     const getCurrentPlayerName = () => currentPlayer.getName();
@@ -243,33 +251,50 @@ const game = (() => {
 
 
 
-    const startGame = () => {
-        currentPlayer = playerX;
-        round = 0;
-        displayController.setStartResetGameBtn("Reset Game");
-        displayController.handleInfoBoxMessage(`Welcome to TicTacToe! Play ${roundsInGame} rounds to win :)`);
+    let introTimer = null;
 
-        setTimeout(() => {
-            displayController.handleInfoBoxMessage(`Player X begins -> that's you, ${playerX.getName()}!`);
-        }, 3800);
+    let nextStarter = playerX;
+
+    const setNextStarter = (player) => { nextStarter = player; };
+
+    const startGame = () => {
+        clearTimeout(introTimer);
+        nextStarter = playerX;
+        currentPlayer = nextStarter;
+        gameCompleted = false;
+        displayController.setStartResetGameBtn("Reset Game");
+        displayController.handleInfoBoxMessage(`Welcome to TicTacToe! First to ${roundsInGame} wins :)`);
+        introTimer = setTimeout(() => {
+            displayController.handleInfoBoxMessage(
+                `Player ${currentPlayer.getStamp()} begins - ${currentPlayer.getName()}!`);
+        }, 1500);
     };
 
     const startRound = () => {
-
-        if (round < roundsInGame ) {
-            gameCompleted = false;
-            displayController.handleInfoBoxMessage(`New round! Player ${currentPlayer.getStamp()} begins - ${currentPlayer.getName()}`);    
-            round++;
-        } else {
-            displayController.handleInfoBoxMessage(`${currentPlayer.getName()} wins the game with all ${roundsInGame} rounds! 🎉🎉🎉`);
-        }
+        clearTimeout(introTimer);
+        currentPlayer = nextStarter;
+        displayController.handleInfoBoxMessage(
+            `Player ${currentPlayer.getStamp()} begins - ${currentPlayer.getName()}`);
     };
 
+    const endRound = () => {
+        // first player to reach roundsInGame wins ends the game
+        if (playerX.getScore() >= roundsInGame || playerO.getScore() >= roundsInGame) gameCompleted = true;
+        return gameCompleted;
+    };
 
+    const getGameWinner = () => {
+        if (playerX.getScore() > playerO.getScore()) return playerX;
+        if (playerO.getScore() > playerX.getScore()) return playerO;
+        return null; // draw
+    };
 
-
-
-    return { startGame, startRound, getCurrentPlayer, getCurrentPlayerName, switchCurrentPlayer, setGameCompleted };
+    return { 
+        startGame, startRound, endRound, getGameWinner, getGameCompleted,
+        getCurrentPlayer, getCurrentPlayerName, switchCurrentPlayer,
+        setNextStarter
+    };
+    
 })();
 
 const playGame = game.startGame();
